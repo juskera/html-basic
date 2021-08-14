@@ -1,34 +1,58 @@
 // DOM Elements
-const tema = document.getElementById('tema');
+const themeBtn = document.getElementById('theme');
 const body = document.body;
+var hour = new Date().getHours()
 
 // Apply the cached theme on reload
 
 const theme = localStorage.getItem('theme');
+const theme_img = localStorage.getItem('theme_img');
 
-if(theme){
+if (theme) {
     body.classList.add(theme);
 }
+
+//apply the cached theme img on reload
+
+if (theme_img == 'sun') {
+    document.getElementById("imgs").src = 'imgs/sun.png';
+
+}
+
+else if (theme_img == 'moon') {
+    document.getElementById("imgs").src = 'imgs/moon.png';
+
+}
+
 
 
 // Button Event Handlers
 
-tema.onclick = () => {
+themeBtn.onclick = () => {
 
-    if (body.classList.contains('claro') && img.src) {
+    if (body.classList.contains('ligth')) {
         //change the theme of the page
-        body.classList.replace('claro', 'escuro')
+        body.classList.replace('ligth', 'dark')
         //change the image of the button
-        document.getElementById("img").src = 'imags/moon.png';
+        document.getElementById("imgs").src = 'imgs/moon.png';
         //estores the selected theme on the browser
-        localStorage.setItem('theme', 'escuro')
+        localStorage.setItem('theme', 'dark')
+        //estores the selected img theme on the browser
+        localStorage.setItem('theme_img', 'moon')
+
+
     }
 
     else {
 
-        body.classList.replace('escuro', 'claro')
-        document.getElementById("img").src = 'imags/sun.png';
-        localStorage.setItem('theme', 'claro')
+        //change the theme of the page
+        body.classList.replace('dark', 'ligth')
+        //change the image of the button
+        document.getElementById("imgs").src = 'imgs/sun.png';
+        //estores the selected theme on the browser
+        localStorage.setItem('theme', 'ligth')
+        //estores the selected img theme on the browser
+        localStorage.setItem('theme_img', 'sun')
 
     }
 }
